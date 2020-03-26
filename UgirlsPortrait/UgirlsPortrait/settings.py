@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Scrapy settings for Douyu project
+# Scrapy settings for UgirlsPortrait project
 #
 # For simplicity, this file contains only settings considered important or
 # commonly used. You can find more settings consulting the documentation:
@@ -9,20 +9,23 @@
 #     https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 
-BOT_NAME = 'Douyu'
+BOT_NAME = 'UgirlsPortrait'
 
-SPIDER_MODULES = ['Douyu.spiders']
-NEWSPIDER_MODULE = 'Douyu.spiders'
+SPIDER_MODULES = ['UgirlsPortrait.spiders']
+NEWSPIDER_MODULE = 'UgirlsPortrait.spiders'
 
-IMAGES_STORE = "F:\image\\douyu\\"
-IMAGES_MIN_HEIGHT = 110
-IMAGES_MIN_WIDTH = 110
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-USER_AGENT = 'Mozilla/5.0 (Linux; U; Android 8.1.0; zh-cn; BLA-AL00 Build/HUAWEIBLA-AL00) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/57.0.2987.132 MQQBrowser/8.9 Mobile Safari/537.36'
+#USER_AGENT = 'UgirlsPortrait (+http://www.yourdomain.com)'
 
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = False
+
+#图片存储位置
+IMAGES_STORE = "F:\image\\UgirlsPortrait\\"
+
+IMAGES_MIN_HEIGHT = 110
+IMAGES_MIN_WIDTH = 110
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 #CONCURRENT_REQUESTS = 32
@@ -49,16 +52,15 @@ ROBOTSTXT_OBEY = False
 
 # Enable or disable spider middlewares
 # See https://docs.scrapy.org/en/latest/topics/spider-middleware.html
-#SPIDER_MIDDLEWARES = {
-#    'Douyu.middlewares.DouyuSpiderMiddleware': 543,
-#}
+# SPIDER_MIDDLEWARES = {
+#    'UgirlsPortrait.middlewares.UgirlsportraitSpiderMiddleware': 543,
+# }
 
 # Enable or disable downloader middlewares
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #DOWNLOADER_MIDDLEWARES = {
-#    'Douyu.middlewares.DouyuDownloaderMiddleware': 543,
+#    'UgirlsPortrait.middlewares.UgirlsportraitDownloaderMiddleware': 543,
 #}
-
 
 # Enable or disable extensions
 # See https://docs.scrapy.org/en/latest/topics/extensions.html
@@ -69,8 +71,8 @@ ROBOTSTXT_OBEY = False
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
-    'Douyu.pipelines.DouyuPipeline': 300,
-    'Douyu.pipelines.ImagespiderPipeline': 200,
+   'UgirlsPortrait.pipelines.UgirlsportraitPipeline': 300,
+    'UgirlsPortrait.pipelines.UgirlsportraitImagePipeline': 350,
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)

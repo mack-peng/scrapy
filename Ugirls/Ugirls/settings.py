@@ -23,8 +23,7 @@ NEWSPIDER_MODULE = 'Ugirls.spiders'
 ROBOTSTXT_OBEY = False
 
 #图片存储位置
-# IMAGES_STORE = "F:\image\\ugirls\\"
-IMAGES_STORE = "F:\image\\beauty\\"
+IMAGES_STORE = "F:\image\\ugirls\\"
 
 IMAGES_MIN_HEIGHT = 110
 IMAGES_MIN_WIDTH = 110

@@ -9,11 +9,8 @@ import scrapy
 
 
 class DouyuItem(scrapy.Item):
-    # Ö÷²¥êÇ³Æ
     nickname = scrapy.Field()
-    # Í¼Æ¬Á´½Ó
     image_link = scrapy.Field()
-    # Í¼Æ¬±¾µØ±£´æ
     image_paths = scrapy.Field()
 
 

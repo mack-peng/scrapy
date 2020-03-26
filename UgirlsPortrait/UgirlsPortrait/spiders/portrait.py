@@ -1,13 +1,17 @@
 # -*- coding: utf-8 -*-
 """
-    ugirls 中的美女写真栏目图片
+    启动 scrapy crawl BeautyPortrait
+    目的 ugirls 中的美女写真栏目图片
+    启动本爬虫需要修改一些文件才可正常运行
+        注释掉 pipelines.py 中的30-41行
+        修改 settings.py中的IMAGES_STORE
 """
 import scrapy
-from Ugirls.items import UgirlsItem
+from UgirlsPortrait.items import UgirlsportraitItem
 
 
-class BeautyPortraitSpider(scrapy.Spider):
-    name = 'BeautyPortrait'
+class PortraitSpider(scrapy.Spider):
+    name = 'portrait'
     allowed_domains = ['ugirls.fm']
     next_page_base = "https://www.ugirls.fm/Index/Search/"
     start_urls = [
@@ -29,7 +33,8 @@ class BeautyPortraitSpider(scrapy.Spider):
 
     # 第一层处理
     def parse(self, response):
-        img_panels = response.css(".magazine_wrap")
+        # li标签层
+        img_panels = response.css(".latest_list li")
         # 判断是否存在下一页
         next_tag = response.css(".xfenye img::attr(src)").extract()
         if len(next_tag) > 0 and next_tag[-1] == "/images/xlist_aaaBg.png":
@@ -37,12 +42,12 @@ class BeautyPortraitSpider(scrapy.Spider):
         else:
             next_page = ""
 
-
         for img_panel in img_panels:
-            img_url = img_panel.css("a::attr(href)").extract_first()
-            item = UgirlsItem()
-            item['number'] = img_panel.css("a::attr(title)").extract_first()
-            item['save_path_name'] = response.url.split("/")[-1].rstrip(".html")
+            img_url = img_panel.css(".magazine_wrap::attr(href)").extract_first()
+            item = UgirlsportraitItem()
+            item['name'] = img_panel.css(".magazine_wrap::attr(title)").extract_first()
+            item['img_type'] = img_panel.css(".magazine_model_info").xpath("a[@class='magazine_tag']/text()".format(response.url)).extract_first()
+
             yield scrapy.Request(url=img_url, callback=self.parse_detail, meta={'item': item})
 
         if next_page:

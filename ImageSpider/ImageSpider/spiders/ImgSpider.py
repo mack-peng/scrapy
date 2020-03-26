@@ -8,13 +8,6 @@ class ImgspiderSpider(scrapy.Spider):
     start_urls = ['https://tom631.com/meinvxiezhen/index_2.html']
     page_count = 1
 
-    # 解析二级子页面
-    def parse_detail(self, response):
-        img_urls = response.css(".xiezhen img::attr(src)").extract()
-        item = ImagespiderItem()
-        item['imgurl'] = img_urls
-        yield item
-
     # 第一层处理
     def parse(self, response):
         img_urls = response.css(".tuijian-tupian::attr(href)").extract()
@@ -31,3 +24,11 @@ class ImgspiderSpider(scrapy.Spider):
         # 只下载10页
         if next_page and self.page_count < 10:
             yield scrapy.Request(url=self.base_url + next_page, callback=self.parse)
+
+
+    # 解析二级子页面
+    def parse_detail(self, response):
+        img_urls = response.css(".xiezhen img::attr(src)").extract()
+        item = ImagespiderItem()
+        item['imgurl'] = img_urls
+        yield item

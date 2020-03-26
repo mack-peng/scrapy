@@ -16,11 +16,9 @@ class DouyuPipeline(ImagesPipeline):
         yield scrapy.Request(image_link)
 
     def item_completed(self, results, item, info):
-        item['nickname']
-        
         image_path = [x["path"] for ok, x in results if ok]
-        if not file_paths:
-            raise DropItem("Item contains no files")
+        if not image_path:
+            raise image_path("Item contains no files")
         os.rename(images_store + image_path[0], images_store + item['nickname'] + ".jpg")
         item['image_paths'] = image_path
         return item
@@ -37,4 +35,4 @@ class ImagespiderPipeline(ImagesPipeline):
 
     def get_media_request(self, item, info):
         for image_url in item['imgurl']:
-            yield Request(image_url)
+            yield scrapy.Request(url=image_url)

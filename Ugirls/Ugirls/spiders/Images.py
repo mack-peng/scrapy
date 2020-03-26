@@ -1,7 +1,16 @@
 # -*- coding: utf-8 -*-
+
 import scrapy
 from Ugirls.items import UgirlsItem
 
+"""
+    配置文件
+        - settings.py 中 IMAGES_STORE 配置图片存储路径，默认为【F:\\image\\ugirls】
+    执行方法 scrapy crawl Images
+    爬虫目的
+        - 爬取尤果网中 【性感尤物】栏目所有分类下的展示模特和内页图片（6张）
+        - 获取美女基本数据保存到 ./output/ugril.csv中，用作数据分析
+"""
 
 class ImagesSpider(scrapy.Spider):
     name = 'Images'

@@ -27,18 +27,18 @@ class UgirlsPipeline(object):
 
     def process_item(self, item, spider):
         dict_item = dict(item)
-        # write_row = []
-        # write_row.append(dict_item['name'])
-        # write_row.append(dict_item['index_url'])
-        # write_row.append(dict_item['head_portrait'])
-        # write_row.append(dict_item['location'])
-        # write_row.append(dict_item['three_circlfes'].replace("-", "/"))
-        # write_row.append(dict_item['description'])
-        # write_row.append(dict_item['popularity'])
-        # write_row.append(dict_item['fans'])
-        # write_row.append(dict_item['album'])
-        # write_row.append(dict_item['video'])
-        # self.csv_writer.writerow(write_row)
+        write_row = []
+        write_row.append(dict_item['name'])
+        write_row.append(dict_item['index_url'])
+        write_row.append(dict_item['head_portrait'])
+        write_row.append(dict_item['location'])
+        write_row.append(dict_item['three_circlfes'].replace("-", "/"))
+        write_row.append(dict_item['description'])
+        write_row.append(dict_item['popularity'])
+        write_row.append(dict_item['fans'])
+        write_row.append(dict_item['album'])
+        write_row.append(dict_item['video'])
+        self.csv_writer.writerow(write_row)
         # 告诉本次item处理完成，必须返回，其他管道可继续处理
         return item
 
